@@ -22,6 +22,8 @@ var userNotes = [
     "",
 ]
 
+var timeDisplayEl = $('#currentDay')
+
 var saveBtn = $('.savebtn');
 
 var firstHr = 9;
@@ -29,6 +31,12 @@ var lastHR = 17;
 var hoursLength = (lastHR-firstHr);
 
 var currentHr = parseInt((moment().format("H")));
+
+function displayTime() {
+    var rightNow = moment().format('MMM DD, YYYY [at] hh:mm:ss a');
+    timeDisplayEl.text(rightNow);
+}
+setInterval(displayTime, 1000)
 
 function colorClass(i) {
     for (var i = 0; i < hourOfday.length; i++) {
