@@ -21,3 +21,27 @@ var userNotes = [
     "",
     "",
 ]
+
+var saveBtn = $('.savebtn');
+
+var firstHr = 9;
+var lastHR = 17;
+var hoursLength = (lastHR-firstHr);
+
+var currentHr = parseInt((moment().format("H")));
+
+function colorClass(i) {
+    for (var i = 0; i < hourOfday.length; i++) {
+        var hour = parseInt(hourOfday[i].getAttribute("data-hour"));
+        // console.log(hourOfday[i].getAttribute("data-hour"));
+        // console.log(currentHr)
+        if (hour < currentHr) {
+            hourOfday[i].classList.add("past");
+        } if (hour == currentHr) {
+            hourOfday[i].classList.add("present");
+        } if (hour > currentHr) {
+            hourOfday[i].classList.add("future");
+        }
+    } 
+};
+colorClass();
