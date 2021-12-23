@@ -20,11 +20,13 @@ var userNotes = [
     "",
     "",
     "",
-]
+];
+
+var savedPlans = Object.keys(localStorage);
 
 var timeDisplayEl = $('#currentDay')
 
-var saveBtn = $('.savebtn');
+var saveBtn = $('.saveBtn');
 
 var firstHr = 9;
 var lastHR = 17;
@@ -38,7 +40,7 @@ function displayTime() {
 }
 setInterval(displayTime, 1000)
 
-function colorClass(i) {
+function colorClass() {
     for (var i = 0; i < hourOfday.length; i++) {
         var hour = parseInt(hourOfday[i].getAttribute("data-hour"));
         // console.log(hourOfday[i].getAttribute("data-hour"));
@@ -53,12 +55,35 @@ function colorClass(i) {
     } 
 };
 
-saveBtn.on('click', function(i) {
+saveBtn.on('click', function() {
     for (var i = 0; i <hourOfday.length; i++) {
-        userNotes[i]=(hourOfday[i].value);
-        localStorage.setItem("agendaItems",JSON.stringify(userNotes));
+        userNotes[i]=(hourOfday[i].description.val);
+        localStorage.setItem("agendaItems", JSON.stringify(userNotes));
     }
-})
+    storeNotes();
+});
 
+function storeNotes() {
+    if(localStorage.getItem("agendaItems")) {
+        for (var i = 0; i < hourOfday.length; i++)
+        userNotes[i] = JSON.parse(userNotes.getItem("agendaItems"))[i];
+        if (userNotes[i]) {
+            hourOfday[i].description.val = userNotes[i];
+        }
+    }
+};
 
 colorClass();
+// storeNotes();
+
+// saveBtn.on("click", function () {
+//     // console.log(this);
+//     var taskInput = $(this).siblings(".description").val();
+//     var timeSlot = $(this).parent().attr("id");
+//     localStorage.setItem(timeSlot, taskInput);
+// }); // end of saveBtn click event
+// for (i = 0; i < savedPlans.length; i++) {
+//     var taskInput = localStorage.getItem(savedPlans[i]);
+//     var savedText = $("#" + savedPlans[i]).find("textarea")
+//     savedText.val(taskInput);
+// } // end of for loop
