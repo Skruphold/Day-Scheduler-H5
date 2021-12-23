@@ -52,4 +52,13 @@ function colorClass(i) {
         }
     } 
 };
+
+saveBtn.on('click', function(i) {
+    for (var i = 0; i <hourOfday.length; i++) {
+        userNotes[i]=(hourOfday[i].value);
+        localStorage.setItem("agendaItems",JSON.stringify(userNotes));
+    }
+})
+
+
 colorClass();
