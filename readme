@@ -1,0 +1,14 @@
+Day-Planner-H5
+============
+
+![screenshot](./dayPlanner.PNG)
+
+Discription of Website!
+============
+This websites purpose is to give an hour by hour agenda for your 9-5 day job. You can enter tasks or goals in the text area next to the time and save them with the save button. the current hour is listed in red and past hours are grey while future hours are green.
+
+Experience while building the website!
+============
+I started out by working in the html and making a box for the first time slot. I used a fancy little image from fontawesome and put it in with the submit button. Then I added the proper class's from the already made css to the appropriate area. Then copied and pasted the time box and made 8 more. I added an attribute because their was already alot of class's and id's, the attribute is so I can grab it in javaScript and apply the past, future and present styles from css. this also required a view variables for last hour first hour and current hour. Then I created the function to display the current time at the top and gave it a setinterval to count up every second. I tried a couple things to save my stuff to local storage which took awhile but I figured it out and I needed to create an Id for the parent of the text area. Then it worked!
+
+[link to deployed page](https://skruphold.github.io/Day-Scheduler-H5/)
